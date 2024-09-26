@@ -40,6 +40,7 @@ namespace Project1_AdonetCustomer
             sqlCommand.Parameters.AddWithValue("@p2", txtCountry.Text);
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
+            MessageBox.Show("City Added");
 
         }
     }
