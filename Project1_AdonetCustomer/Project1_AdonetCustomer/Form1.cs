@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace Project1_AdonetCustomer
 {
     public partial class Form1 : Form
@@ -21,7 +21,8 @@ namespace Project1_AdonetCustomer
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server = KERECI\\SQLEXPRESS; Initial Catalog = DbCustemer; Integrated Security = True;");   
+            SqlConnection sqlConnection = new SqlConnection("Data Source=KERECI\\SQLEXPRESS;Initial Catalog=DbCustermer;Integrated Security=True;");
+
 
             sqlConnection.Open();
             SqlCommand sqlCommand = new SqlCommand("Select * from Tbl_Customer", sqlConnection);
