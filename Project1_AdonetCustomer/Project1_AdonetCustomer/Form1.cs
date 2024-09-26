@@ -21,7 +21,7 @@ namespace Project1_AdonetCustomer
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=KERECI\\SQLEXPRESS; Initial Catalog=DbCustemer; Integrated Security=True;\r\n");   
+            SqlConnection sqlConnection = new SqlConnection("Server = KERECI\\SQLEXPRESS; Initial Catalog = DbCustemer; Integrated Security = True;");   
 
             sqlConnection.Open();
             SqlCommand sqlCommand = new SqlCommand("Select * from Tbl_Customer", sqlConnection);
