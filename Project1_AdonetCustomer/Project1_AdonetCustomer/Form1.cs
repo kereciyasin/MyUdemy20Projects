@@ -25,7 +25,7 @@ namespace Project1_AdonetCustomer
 
 
             sqlConnection.Open();
-            SqlCommand sqlCommand = new SqlCommand("Select * from Tbl_Customer", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("Select * from Tbl_City", sqlConnection);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
