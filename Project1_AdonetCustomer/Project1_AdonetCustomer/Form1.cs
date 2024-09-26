@@ -43,5 +43,15 @@ namespace Project1_AdonetCustomer
             MessageBox.Show("City Added");
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand sqlCommand = new SqlCommand("Delete from Tbl_City where CityId=@p1", sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@p1", txtCityId.Text);
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+            MessageBox.Show("City Deleted");
+        }
     }
 }
