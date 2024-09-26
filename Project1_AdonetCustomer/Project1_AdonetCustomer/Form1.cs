@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.Common;
 namespace Project1_AdonetCustomer
 {
     public partial class Form1 : Form
@@ -17,13 +18,11 @@ namespace Project1_AdonetCustomer
         {
             InitializeComponent();
         }
-        
+        SqlConnection sqlConnection = new SqlConnection("Data Source=KERECI\\SQLEXPRESS;Initial Catalog=DbCustermer;Integrated Security=True;");
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection("Data Source=KERECI\\SQLEXPRESS;Initial Catalog=DbCustermer;Integrated Security=True;");
-
-
+            
             sqlConnection.Open();
             SqlCommand sqlCommand = new SqlCommand("Select * from Tbl_City", sqlConnection);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
@@ -31,6 +30,17 @@ namespace Project1_AdonetCustomer
             sqlDataAdapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;   
             sqlConnection.Close();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand sqlCommand = new SqlCommand("Insert into Tbl_City (CityName, CityCountry) values (@p1, @p2)", sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@p1", txtCityName.Text);
+            sqlCommand.Parameters.AddWithValue("@p2", txtCountry.Text);
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+
         }
     }
 }
